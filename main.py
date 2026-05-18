@@ -1,5 +1,5 @@
 import feedparser
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # RSS一覧
 feeds = [
@@ -92,7 +92,9 @@ items.sort(
 )
 
 # 現在時刻
-now = datetime.now().strftime("%Y-%m-%d %H:%M")
+from datetime import datetime, timezone, timedelta
+JST = timezone(timedelta(hours=9))
+now = datetime.now(JST).strftime("%Y-%m-%d %H:%M:%S")
 
 # HTML生成
 html = f"""<!DOCTYPE html>
